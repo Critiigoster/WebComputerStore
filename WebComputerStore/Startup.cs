@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebComputerStore.Data;
+using WebComputerStore.Data.Interfaces;
+using WebComputerStore.Data.Repository;
 
 namespace WebComputerStore
 {
@@ -37,6 +39,10 @@ namespace WebComputerStore
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddTransient<ICategories, CategoryRepository>();
+            services.AddTransient<IAllProducts, ProductRepository>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

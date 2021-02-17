@@ -3,14 +3,24 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WebComputerStore.Models;
+using Microsoft.EntityFrameworkCore.SqlServer; 
+
 
 namespace WebComputerStore.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
+             Database.EnsureCreated();   // create database when first time occuring
         }
+        
+
+        // These properties allow to represent collection of objects related to particular table in database
+        public DbSet<Category> Category { get; set;  }
+        public DbSet<Product> Product { get; set; }
+
+
     }
 }
