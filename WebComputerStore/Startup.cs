@@ -19,12 +19,15 @@ namespace WebComputerStore
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+
+        public IConfigurationRoot Configuration { get; }
+
+        public Startup(IWebHostEnvironment configuration)
         {
-            Configuration = configuration;
+            Configuration = new ConfigurationBuilder().SetBasePath(configuration.ContentRootPath).
+                AddJsonFile("appsettings.json").Build();
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -35,6 +38,7 @@ namespace WebComputerStore
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
@@ -77,6 +81,14 @@ namespace WebComputerStore
             });
 
             app.UseStatusCodePages(); // For Pages with codes 404, 200 etc..
+
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                ApplicationDbContext context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                DbObjects.Initial(context);
+            }
+            
+
         }
     }
 }
