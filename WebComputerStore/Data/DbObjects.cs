@@ -64,7 +64,7 @@ namespace WebComputerStore.Data
                         Price = 999,
                         Available = true,
                         IsFavorite = false,
-                        Image = "https://www.apple.com/v/macbook-air/j/images/overview/hero_endframe__ea0qze85eyi6_large.jpg",
+                        Image = "https://www.notebookcheck-ru.com/uploads/tx_nbc2/air13teaser.jpg",
                         Category = Categories["Apple"]
 
                     },
