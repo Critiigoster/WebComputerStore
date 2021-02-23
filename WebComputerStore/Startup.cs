@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Http; 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ using System.Threading.Tasks;
 using WebComputerStore.Data;
 using WebComputerStore.Data.Interfaces;
 using WebComputerStore.Data.Repository;
+using WebComputerStore.Models;
 
 namespace WebComputerStore
 {
@@ -45,7 +47,7 @@ namespace WebComputerStore
             services.AddRazorPages();
             services.AddTransient<ICategories, CategoryRepository>();
             services.AddTransient<IAllProducts, ProductRepository>();
-
+            services.AddServerSideBlazor(); // creates the services that Blazor uses
 
         }
 
@@ -65,7 +67,8 @@ namespace WebComputerStore
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            // app.UseMvcWithDefaultRoute();
+
+            //app.UseMvcWithDefaultRoute();
 
             app.UseRouting();
 
@@ -77,8 +80,17 @@ namespace WebComputerStore
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapDefaultControllerRoute();
+
                 endpoints.MapRazorPages();
+                endpoints.MapBlazorHub(); // registers the Blazor middleware components
+                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
+                // Addition is to finesse the routing system to ensure that Blazor works seamlessly with the rest of  the application.
+
             });
+
+            
 
             app.UseStatusCodePages(); // For Pages with codes 404, 200 etc..
 
