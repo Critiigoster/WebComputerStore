@@ -16,6 +16,8 @@ using WebComputerStore.Data;
 using WebComputerStore.Data.Interfaces;
 using WebComputerStore.Data.Repository;
 using WebComputerStore.Models;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
 
 namespace WebComputerStore
 {
@@ -48,7 +50,7 @@ namespace WebComputerStore
             services.AddTransient<ICategories, CategoryRepository>();
             services.AddTransient<IAllProducts, ProductRepository>();
             services.AddServerSideBlazor(); // creates the services that Blazor uses
-
+          
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -81,12 +83,35 @@ namespace WebComputerStore
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                endpoints.MapDefaultControllerRoute();
+              //  endpoints.MapDefaultControllerRoute();
 
                 endpoints.MapRazorPages();
                 endpoints.MapBlazorHub(); // registers the Blazor middleware components
                 endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
                 // Addition is to finesse the routing system to ensure that Blazor works seamlessly with the rest of  the application.
+
+
+                /*
+                 endpoints.MapControllerRoute("catpage",
+                    "{category}/Page{productPage:int}",
+                    new { Controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute("page", "Page{productPage:int}",
+                    new { Controller = "Home", action = "Index", productPage = 1 });
+
+                endpoints.MapControllerRoute("category", "{category}",
+                    new { Controller = "Home", action = "Index", productPage = 1 });
+
+                endpoints.MapControllerRoute("pagination",
+                    "Products/Page{productPage}",
+                    new { Controller = "Home", action = "Index", productPage = 1 });
+                endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
+                endpoints.MapBlazorHub();
+                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
+                 
+                 */
+
 
             });
 

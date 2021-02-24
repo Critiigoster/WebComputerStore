@@ -1,24 +1,15 @@
 ﻿@page "/admin"
-@model WebComputerStore.Pages.Admin.IndexModel
-
-@{
-    Layout = "_Layout";
-}
+@{  Layout = null; }
 
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta name="viewport" content="width=device-width" />
     <title>ComputerStore Admin</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <base href="/" />  
 </head>
-<body>
-
-    <component type="typeof(Routed)" render-mode="Server" />
+<body>    
+    <component type="typeof(AdminLayout)" render-mode="Server" />
     <script src="/_framework/blazor.server.js"></script>
-    <!--Give JS code through Blazor Server-->
 </body>
-
 </html>
