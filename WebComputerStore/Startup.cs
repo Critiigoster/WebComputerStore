@@ -87,7 +87,7 @@ namespace WebComputerStore
 
                 endpoints.MapRazorPages();
                 endpoints.MapBlazorHub(); // registers the Blazor middleware components
-                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
+                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");     
                 // Addition is to finesse the routing system to ensure that Blazor works seamlessly with the rest of  the application.
 
 

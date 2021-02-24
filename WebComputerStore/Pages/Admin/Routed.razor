@@ -1,6 +1,6 @@
 ﻿<Router AppAssembly="typeof(Startup).Assembly">
-    <Found>
-        <RouteView RouteData="@context" DefaultLayout="typeof(AdminLayout)" />
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(AdminLayout)" />
     </Found>
     <NotFound>
         <h4 class="bg-danger text-white text-center p-2">
