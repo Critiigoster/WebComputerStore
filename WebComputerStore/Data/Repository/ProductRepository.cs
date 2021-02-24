@@ -22,15 +22,28 @@ namespace WebComputerStore.Data.Repository
             this.dbContext = dbContext;
         }
 
-        public IEnumerable<Product> Products =>
+        public IQueryable<Product> Products =>
             dbContext.Product.Include(c =>
             c.Category); 
         public Product GetProductObject(int ProductId)
         =>
            dbContext.Product.FirstOrDefault(p =>
-            p.ProductId == ProductId); 
-        
+            p.ProductId == ProductId);
 
+        public void CreateProduct(Product p)
+        {
+            dbContext.Add(p);
+            dbContext.SaveChanges();
+        }
+        public void DeleteProduct(Product p)
+        {
+            dbContext.Remove(p);
+            dbContext.SaveChanges();
+        }
+        public void SaveProduct(Product p)
+        {
+            dbContext.SaveChanges();
+        }
 
 
     }

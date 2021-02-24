@@ -6,9 +6,9 @@ using WebComputerStore.Models;
 
 namespace WebComputerStore.ViewModel
 {
-    public class ProductListViewModel
+    public class ProductListViewModel 
     {
-      public IEnumerable<Product> _Products { get; set;  }
+      public IQueryable<Product> _Products { get; set;  }
 
        public string CurrentCategory { get; set; }
 
