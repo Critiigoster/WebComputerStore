@@ -22,19 +22,24 @@
                 <tr>
                     <td>@p.ProductId</td>
                     <td>@p.Title</td>
-                    <td>@p.Category</td>
+                    <td>@p.Category.CategoryName</td>
                     <td>@p.Price.ToString("c")</td>
                     <td>
-                        
-                                <NavLink class="btn btn-info btn-sm"
-                                         href="@GetDetailsUrl(p.ProductId)">
-                                    Details
-                                </NavLink>
-                                <NavLink class="btn btn-warning btn-sm"
-                                         href="@GetEditUrl(p.ProductId)">
-                                    Edit
-                                </NavLink>
-                        
+
+                        <NavLink class="btn btn-info btn-sm"
+                                 href="@GetDetailsUrl(p.ProductId)">
+                            Details
+                        </NavLink>
+                        <NavLink class="btn btn-warning btn-sm"
+                                 href="@GetEditUrl(p.ProductId)">
+                            Edit
+                        </NavLink>
+
+                        <button class="btn btn-danger btn-sm"
+                                @onclick="@(e => DeleteProduct(p))">
+                            Delete
+                        </button>
+
                     </td>
                 </tr>
             }
@@ -62,6 +67,12 @@
     public async Task UpdateData()
     {
         ProductData = await Repository.Products.ToListAsync();
+    }
+
+    public async Task DeleteProduct(Product p)
+    {
+        Repository.DeleteProduct(p);
+        await UpdateData();
     }
 
     public string GetDetailsUrl(long id) => $"/admin/products/details/{id}";
