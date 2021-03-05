@@ -5,20 +5,23 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using WebComputerStore.Data.Interfaces;
 using WebComputerStore.Models;
+using WebComputerStore.ViewModel;
 
 namespace WebComputerStore.Controllers
 {
     public class HomeController : Controller
     {
+        private IAllProducts repository;
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
         {
-            _logger = logger;
-        }
+            _logger = logger;   }
 
-        public IActionResult Index()
+        public IActionResult Index(string category)
         {
             return View();
         }

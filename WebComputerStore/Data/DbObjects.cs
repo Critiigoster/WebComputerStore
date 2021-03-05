@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using WebComputerStore.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebComputerStore.Data
 {
@@ -12,21 +13,26 @@ namespace WebComputerStore.Data
     {
         // Static lets to get method instantly
         // Method allows to get objects from database and write in it.
-        public static void Initial(ApplicationDbContext Content)
+        public static void Initial(IApplicationBuilder Content)
         {
-           //  ApplicationDbContext Content =
-                   // application.ApplicationServices.GetRequiredService<ApplicationDbContext>();
+           ApplicationDbContext context =
+        Content.ApplicationServices.CreateScope().ServiceProvider.
+        GetRequiredService<ApplicationDbContext>();
+
+           // if there are any pending migrations
+            if (context.Database.GetPendingMigrations().Any())
+                context.Database.Migrate();
 
 
-            if (!Content.Category.Any())
-                Content.Category.AddRange(Categories.Select(c =>
+            if (!context.Category.Any())
+                context.Category.AddRange(Categories.Select(c =>
                 c.Value));
             // Create range of object to and fro database (if any)
 
 
-            if (!Content.Product.Any())
+            if (!context.Product.Any())
             {
-                Content.AddRange(
+                context.AddRange(
                     
                     new Product { 
                     Title = "Lenovo IdeaPad 1", 
@@ -71,7 +77,7 @@ namespace WebComputerStore.Data
 
                     new Product
                     {
-                        Title = "AMD Ryzen 5000 Series",
+                        Title = "Processor AMD Ryzen 5000 Series",
                         ShortDescription = "AMD Ryzen Desktop Processors",
                         LongDescription = "Whether you are playing the latest games, designing the next skyscraper, or crunching data, you need a powerful processor that can handle it all—and more. Hands down, the AMD Ryzen 5000 Series desktop processors set the bar for gamers and artists alike.",
                         Price = 879.95m,
@@ -123,7 +129,7 @@ namespace WebComputerStore.Data
 
             }
 
-            Content.SaveChanges(); // Saves all products and categories; 
+            context.SaveChanges(); // Saves all products and categories; 
         }
 
 

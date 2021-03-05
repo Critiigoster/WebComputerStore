@@ -10,6 +10,7 @@ namespace WebComputerStore.ViewModel
     {
       public IQueryable<Product> _Products { get; set;  }
 
+        public PagingInfo PagingInfo { get; set; }
        public string CurrentCategory { get; set; }
 
     }

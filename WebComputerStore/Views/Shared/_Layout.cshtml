@@ -26,16 +26,17 @@
                     <ul class="navbar-nav me-auto mb-2 mb-sm-0">
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" 
+                               href="@Url.Action("Index", "Home")">
+                                            Home</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="#">About Us</a>
                         </li>
 
-                        <li class="nav-item">
-                            @Html.ActionLink("All Products", "List", "Product")
-                        </li>
+                       
+                        
 
                     </ul>
                     <form>
@@ -48,10 +49,15 @@
 
 
     <div class="text-center">
-    <h1 class="display-4">Cumputer Store</h1>
+        <h1 class="display-4">
+            Cumputer Store 
+        </h1>
 
     </div>
 
+    <h3 class="text-md-right ">
+        @Html.ActionLink("All Products", "List", "Product")
+    </h3>
 
 
     <div class="container body-content">

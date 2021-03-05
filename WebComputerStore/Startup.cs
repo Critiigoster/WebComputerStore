@@ -47,8 +47,12 @@ namespace WebComputerStore
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
-            services.AddTransient<ICategories, CategoryRepository>();
-            services.AddTransient<IAllProducts, ProductRepository>();
+
+            // creates a service where each HTTP request gets its own repository object, 
+             // which is the way that Entity  Framework Core is typically used.
+            services.AddScoped<ICategories, CategoryRepository>();
+            services.AddScoped<IAllProducts, ProductRepository>();
+
             services.AddServerSideBlazor(); // creates the services that Blazor uses
           
         }
@@ -77,6 +81,9 @@ namespace WebComputerStore
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseStatusCodePages(); // For Pages with codes 404, 200 etc..
+
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -91,41 +98,24 @@ namespace WebComputerStore
                 // Addition is to finesse the routing system to ensure that Blazor works seamlessly with the rest of  the application.
 
 
-                /*
-                 endpoints.MapControllerRoute("catpage",
-                    "{category}/Page{productPage:int}",
-                    new { Controller = "Home", action = "Index" });
-
-                endpoints.MapControllerRoute("page", "Page{productPage:int}",
-                    new { Controller = "Home", action = "Index", productPage = 1 });
-
-                endpoints.MapControllerRoute("category", "{category}",
-                    new { Controller = "Home", action = "Index", productPage = 1 });
-
-                endpoints.MapControllerRoute("pagination",
-                    "Products/Page{productPage}",
-                    new { Controller = "Home", action = "Index", productPage = 1 });
-                endpoints.MapDefaultControllerRoute();
-                endpoints.MapRazorPages();
-                endpoints.MapBlazorHub();
-                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
-                 
-                 */
+               
 
 
             });
 
-            
 
-            app.UseStatusCodePages(); // For Pages with codes 404, 200 etc..
+            DbObjects.Initial(app);
 
+
+
+            /*
             using (var scope = app.ApplicationServices.CreateScope())
             {
                 ApplicationDbContext context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                 DbObjects.Initial(context);
             }
             
-
+            */
         }
     }
 }

@@ -9,7 +9,8 @@ using Microsoft.EntityFrameworkCore.SqlServer;
 
 namespace WebComputerStore.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    //IdentityDbContext implements DbContext
+    public class ApplicationDbContext : IdentityDbContext 
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
