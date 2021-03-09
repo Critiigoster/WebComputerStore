@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" />
     <link rel="stylesheet" href="~/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/style.css" />
-
-
-
+    
 </head>
 <body>
 
@@ -26,17 +24,18 @@
                     <ul class="navbar-nav me-auto mb-2 mb-sm-0">
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" 
+                            <a class="nav-link active" aria-current="page"
                                href="@Url.Action("Index", "Home")">
-                                            Home</a>
+                                Home
+                            </a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="#">About Us</a>
                         </li>
 
-                       
-                        
+
+
 
                     </ul>
                     <form>
@@ -50,17 +49,36 @@
 
     <div class="text-center">
         <h1 class="display-4">
-            Cumputer Store 
+            Cumputer Store
         </h1>
 
     </div>
 
-    <h3 class="text-md-right ">
+    <h3 class="text-md-center">
         @Html.ActionLink("All Products", "List", "Product")
     </h3>
 
+    <div class="bg-primary text-white p-2">
+        <span class="navbar-brand ml-2">Categories</span>
+    </div>
+
+    <div class="row m-1 p-1">
+        <div id="categories" class="col-3">
+            <vc:navigation-menu />
+        </div>
+
+        <div class="col-9">
+            @RenderBody()
+        </div>
+
+    </div>
+
 
     <div class="container body-content">
+
+
+
+
         @RenderBody()
         <hr />
 

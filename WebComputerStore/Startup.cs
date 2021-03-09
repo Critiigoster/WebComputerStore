@@ -86,11 +86,28 @@ namespace WebComputerStore
 
             app.UseEndpoints(endpoints =>
             {
+
+                endpoints.MapControllerRoute("catpage",
+                 "{category}/Page{productPage:int}",
+                 new { Controller = "Product", action = "List" });
+
+                endpoints.MapControllerRoute("page", "Page{productPage:int}",
+                new { Controller = "Product", action = "List", productPage = 1 });
+
+                endpoints.MapControllerRoute("category", "{category}",
+                new { Controller = "Product", action = "List", productPage = 1 });
+
+                endpoints.MapControllerRoute("pagination",
+                "Products/Page{productPage}",
+                new { Controller = "Product", action = "List", productPage = 1 });
+
+
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-              //  endpoints.MapDefaultControllerRoute();
+                endpoints.MapDefaultControllerRoute();
 
                 endpoints.MapRazorPages();
                 endpoints.MapBlazorHub(); // registers the Blazor middleware components

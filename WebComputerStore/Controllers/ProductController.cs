@@ -20,7 +20,7 @@ namespace WebComputerStore.Controllers
             this.allCategories = allCategories;
 
         }
-        public IActionResult List(int productPage = 1)
+        public IActionResult List(string category, int productPage = 1)
         {
             // Working through view models 
             // using WebComputerStore.ViewModel
@@ -28,6 +28,7 @@ namespace WebComputerStore.Controllers
                 new ProductListViewModel();
 
             obj._Products = allProducts.Products.
+                Where(p=> category == null || p.Category.CategoryName == category).
                 OrderBy(p=> p.ProductId)
                 .Skip((productPage-1)*PageSize)
                 .Take(PageSize);

@@ -8,6 +8,6 @@ namespace WebComputerStore.Data.Interfaces
 {
    public interface ICategories
     {
-        public IEnumerable<Category> Categories { get; } 
+        public IQueryable<Category> Categories { get; } 
     }
 }

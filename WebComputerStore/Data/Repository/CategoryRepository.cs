@@ -16,7 +16,7 @@ namespace WebComputerStore.Data.Repository
         {
             this.dbContext = dbContext;
         }
-        public IEnumerable<Category> Categories =>
+        public IQueryable<Category> Categories =>
             dbContext.Category;
 
             
