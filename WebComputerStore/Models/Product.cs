@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace WebComputerStore.Models
@@ -22,6 +25,8 @@ namespace WebComputerStore.Models
 
         [Required]
         [Range(0.01, double.MaxValue, ErrorMessage = "Please enter a positive price")]
+         [Column(TypeName = "decimal(8, 2)")]
+
         public decimal Price { get; set; } // Product price 
 
         public bool IsFavorite { get; set; }
@@ -32,6 +37,9 @@ namespace WebComputerStore.Models
         public int CategoryId { get; set; }
 
         [Required(ErrorMessage = "Please specify a category")]
+
+        [JsonIgnore]
+        [IgnoreDataMember]
         public Category Category { get; set; }
         // Category has only one category
 

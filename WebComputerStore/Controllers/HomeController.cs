@@ -13,8 +13,9 @@ namespace WebComputerStore.Controllers
 {
     public class HomeController : Controller
     {
-        private IAllProducts repository;
+        private IAllProducts _repository;
 
+  
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -23,6 +24,7 @@ namespace WebComputerStore.Controllers
 
         public IActionResult Index(string category)
         {
+
             return View();
         }
 

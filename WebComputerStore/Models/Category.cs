@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace WebComputerStore.Models
@@ -13,6 +15,8 @@ namespace WebComputerStore.Models
 
         public string Descriprion { get; set; }
 
+        [JsonIgnore]
+        [IgnoreDataMember]
         public List<Product> products { get; set; }
         // Category has many objects of its class
 

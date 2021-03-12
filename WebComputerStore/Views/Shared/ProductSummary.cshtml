@@ -1,0 +1,17 @@
+﻿@model Product
+
+
+
+    <form id="@Model.ProductId" asp-page="/Cart" method="post">
+        <input type="hidden" asp-for="ProductId" />
+        <input type="hidden" name="returnUrl"
+               value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+
+            <button type="submit"
+                    class="btn btn-success btn-sm pull-right" style="float:inherit">
+                Buy
+            </button>
+
+
+    </form>
+

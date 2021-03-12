@@ -1,4 +1,6 @@
-﻿
+﻿@model ProductListViewModel
+
+
 <!DOCTYPE html>
 
 <html>
@@ -16,15 +18,21 @@
             foreach (var item in Model._Products)
             {
                 <div class="col-lg-4">
-                    <img style="width: 400px; height: 200px;" class="img-thumbnail" 
-                         src ="@item.Image" alt="@item.Title" />
+                    <img style="width: 400px; height: 200px;" class="img-thumbnail"
+                         src="@item.Image" alt="@item.Title" />
 
-                     <h3>@item.Title</h3>
-                     <p>@item.ShortDescription</p>
-                     <p>@item.Price.ToString("c")</p>
-                     <p><a class="btn btn-warning" href="#">Details</a></p>
+                    <h3>@item.Title</h3>
+                    <p>@item.ShortDescription</p>
+                    <span style="font-size:20px"   class="badge badge-pill badge-primary" >@item.Price.ToString("c")</span>
+                    <partial name="ProductSummary" model="item" />
+                    <p><a class="btn btn-warning" href="#">Details</a></p>
+
+
+
                 </div>
             }
+
+            
 
         }
 
@@ -32,7 +40,9 @@
 
     <div page-model="@Model.PagingInfo" page-action="List" page-classes-enabled="true"
          page-class="btn" page-class-normal="btn-outline-dark"
-         page-class-selected="btn-primary" class="btn-group pull-right m-1">
+         page-class-selected="btn-primary" page-url-category="@Model.CurrentCategory"
+         class="btn-group pull-right m-1">
+
     </div>
 
 

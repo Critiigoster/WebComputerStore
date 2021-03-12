@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using WebComputerStore.Data.Interfaces;
+using WebComputerStore.Models;
 using WebComputerStore.ViewModel;
 
 namespace WebComputerStore.Controllers
@@ -44,7 +45,15 @@ namespace WebComputerStore.Controllers
             return View(obj);
         }
 
-      
+        /*
+        public IActionResult ProductSummary( )
+        {
+            ProductListViewModel obj =
+                new ProductListViewModel();
 
+            return View(obj);
+        }
+
+        */
     }
 }
