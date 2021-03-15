@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" />
     <link rel="stylesheet" href="~/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/style.css" />
+    <link href="/lib/font-awesome/css/all.min.css" rel="stylesheet" />
     
 </head>
 <body>
@@ -15,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Expand</a>
+                <a class="navbar-brand" href="#">Welcome</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -43,6 +44,18 @@
                     </form>
                 </div>
             </div>
+
+            <div class="bg-dark text-white p-2">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-6 text-right">
+                            <vc:cart-summary />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </nav>
     </header>
 
@@ -54,7 +67,7 @@
 
     </div>
 
-    <h3 class="text-md-center">
+    <h3 class="text-md-center border-top border-info ">
         @Html.ActionLink("All Products", "List", "Product")
     </h3>
 
@@ -67,7 +80,7 @@
             <vc:navigation-menu />
         </div>
 
-        <div class="col-9">
+        <div class="col-9 ">
             @RenderBody()
         </div>
 

@@ -58,8 +58,10 @@ namespace WebComputerStore
             // which is the way that Entity  Framework Core is typically used.
             services.AddScoped<ICategories, CategoryRepository>();
             services.AddScoped<IAllProducts, ProductRepository>();
-          //  services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
-           // services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+            services.AddScoped<IOrder, OrderRepository>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddServerSideBlazor(); // creates the services that Blazor uses
 
