@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
 
+
 namespace WebComputerStore
 {
     public class Startup
@@ -44,8 +45,15 @@ namespace WebComputerStore
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDbContext<ApplicationIdentityDbContext>(options =>
+             options.UseSqlServer(
+             Configuration["ConnectionStrings:IdentityConnection"]));
+
+
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationIdentityDbContext>(); 
+
             services.AddControllersWithViews();
 
             /*services.AddControllersWithViews()
@@ -94,6 +102,7 @@ namespace WebComputerStore
             app.UseRouting();
             app.UseSession();
 
+            // set up the middleware components that implement the security policy
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -140,6 +149,7 @@ namespace WebComputerStore
 
 
             DbObjects.Initial(app);
+            DbIdentityObjects.EnsurePopulated(app);
 
 
 
