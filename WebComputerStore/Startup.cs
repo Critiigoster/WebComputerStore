@@ -126,6 +126,7 @@ namespace WebComputerStore
                 "Products/Page{productPage}",
                 new { Controller = "Product", action = "List", productPage = 1 });
 
+              
 
                 /*
                 endpoints.MapControllerRoute(

@@ -29,14 +29,11 @@ namespace WebComputerStore.Models
 
         public decimal Price { get; set; } // Product price 
 
-        public bool IsFavorite { get; set; }
-
-        public bool  Available { get; set; }
+        [Required(ErrorMessage = "Please specify a category")]
 
         // Two properties for assigning object to particular category
-        public int CategoryId { get; set; }
+        public int CategoryId { get; set; } = 1;
 
-        [Required(ErrorMessage = "Please specify a category")]
 
         [JsonIgnore]
         [IgnoreDataMember]

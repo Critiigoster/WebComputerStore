@@ -27,7 +27,7 @@ namespace WebComputerStore.Data
             .CreateScope().ServiceProvider
             .GetRequiredService<UserManager<IdentityUser>>();
             IdentityUser user = await userManager.FindByIdAsync(adminUser);
-            if (user != null)
+            if (user == null)
             {
                 user = new IdentityUser("Admin");
                 user.Email = "begroom@gmail.com";

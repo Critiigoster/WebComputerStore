@@ -25,7 +25,7 @@ namespace WebComputerStore.Controllers
         public IActionResult Index(string category)
         {
 
-            return View();
+            return RedirectToAction("List", "Product");
         }
 
         public IActionResult Privacy()

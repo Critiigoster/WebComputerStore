@@ -39,8 +39,6 @@ namespace WebComputerStore.Data
                     ShortDescription = "Laptop for work",
                     LongDescription = "Whether you are looking to stream your favorite movies, play your favorite games or get down to work, IdeaPad has a laptop for you with top-notch performance at any budget", 
                     Price = 193.99m, 
-                    Available = true,
-                    IsFavorite = false,
                     Image = "https://static.lenovo.com/na/subseries/hero/ideapad-1-11-intel-ice-blue-hero.png",
                     Category = Categories["Computers"]
                     
@@ -55,8 +53,7 @@ namespace WebComputerStore.Data
                         "Classic and modern games at 1080P at 60 FPS" +
                         "Fast, smooth, power - efficient gaming experiences.Support up to 8K display at 60Hz",
                         Price = 299.99m,
-                        Available = true,
-                        IsFavorite = false,
+                        
                         Image = "https://images-na.ssl-images-amazon.com/images/I/91wSunpXgpL._AC_SL1500_.jpg",
                         Category = Categories["Video Cards"]
 
@@ -68,8 +65,7 @@ namespace WebComputerStore.Data
                         ShortDescription = "Power. It’s in the Air.",
                         LongDescription = "Our thinnest, lightest notebook, completely transformed by the Apple M1 chip. CPU speeds up to 3.5x faster. GPU speeds up to 5x faster. Our most advanced Neural Engine for up to 9x faster machine learning. The longest battery life ever in a MacBook Air. And a silent, fanless design. This much power has never been this ready to go.",
                         Price = 999.99m,
-                        Available = true,
-                        IsFavorite = false,
+                       
                         Image = "https://www.notebookcheck-ru.com/uploads/tx_nbc2/air13teaser.jpg",
                         Category = Categories["Apple"]
 
@@ -81,8 +77,7 @@ namespace WebComputerStore.Data
                         ShortDescription = "AMD Ryzen Desktop Processors",
                         LongDescription = "Whether you are playing the latest games, designing the next skyscraper, or crunching data, you need a powerful processor that can handle it all—and more. Hands down, the AMD Ryzen 5000 Series desktop processors set the bar for gamers and artists alike.",
                         Price = 879.95m,
-                        Available = true,
-                        IsFavorite = false,
+                       
                         Image = "https://www.amd.com/system/files/styles/992px/private/2020-10/648625-vermeer-black-chip-render-1260x709_2.png?itok=b6PL7Emc",
                         Category = Categories["Processors"]
 
@@ -94,8 +89,7 @@ namespace WebComputerStore.Data
                         ShortDescription = "Solid State Drive - 1TB",
                         LongDescription = "GO BIG, DO MORE: The 870 QVO is Samsung’s latest 2nd generation QLC SSD with up to 8TB of storage capacity",
                         Price = 109.95m,
-                        Available = true,
-                        IsFavorite = false,
+                       
                         Image = "https://images-na.ssl-images-amazon.com/images/I/91S1PIX%2ByWL._AC_SL1500_.jpg",
                         Category = Categories["SSDs&HardDrives"]
 
@@ -107,8 +101,7 @@ namespace WebComputerStore.Data
                         ShortDescription = "Corsair Vengeance LPX 16GB (2x8GB) DDR4 DRAM 3200MHz C16 Desktop Memory Kit - Black",
                         LongDescription = "Hand-sorted memory chips ensure high performance with generous Overclocking headroom. Available in multiple colors to match the style of your system",
                         Price = 89.98m,
-                        Available = true,
-                        IsFavorite = false,
+                        
                         Image = "https://images-na.ssl-images-amazon.com/images/I/51kHiPeTSmL._AC_SL1000_.jpg",
                         Category = Categories["RAM"]
 
@@ -120,8 +113,7 @@ namespace WebComputerStore.Data
                         ShortDescription = "Ultra HD Monitor for creators",
                         LongDescription = "LG 27UN850-W 27 Inch Ultrafine UHD (3840 x 2160) IPS Display with VESA DisplayHDR 400, USB Type-C and 3-Side Virtually Borderless Display with Height/Swivel/Pivot/Tilt Adjustable Stand, Silver",
                         Price = 194.99m,
-                        Available = true,
-                        IsFavorite = false,
+                        
                         Image = "https://images-na.ssl-images-amazon.com/images/I/81kVFBp13RL._AC_SL1500_.jpg",
                         Category = Categories["Monitors"]
 

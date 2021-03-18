@@ -1,5 +1,4 @@
 ﻿@page "/admin/products/edit/{id:long}"
-
 @inherits OwningComponentBase<IAllProducts>
 
 <style>
@@ -37,16 +36,20 @@
         <ValidationMessage For="@(() => Product.LongDescription)" />
         <InputText class="form-control" @bind-Value="Product.LongDescription" />
     </div>
-    <div class="form-group">
-        <label>Category</label>
-        <ValidationMessage For="@(() => Product.Category)" />
-        <InputText class="form-control" @bind-Value="Product.Category.CategoryName" />
-    </div>
+
     <div class="form-group">
         <label>Price</label>
         <ValidationMessage For="@(() => Product.Price)" />
         <InputNumber class="form-control" @bind-Value="Product.Price" />
     </div>
+    <div class="form-group">
+        <label>Category</label>
+        <ValidationMessage For="@(() => Product.Category.CategoryName)" />
+        <InputText class="form-control" @bind-Value="Product.Category.CategoryName" />
+
+
+    </div>
+
     <button type="submit" class="btn btn-@ThemeColor">Save</button>
     <NavLink class="btn btn-secondary" href="/admin/products">Cancel</NavLink>
 </EditForm>

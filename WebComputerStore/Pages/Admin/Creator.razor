@@ -1,8 +1,6 @@
 ﻿@page "/admin/products/create"
 @inherits OwningComponentBase<IAllProducts>
 
-
-
 <style>
     div.validation-message {
         color: rgb(220, 53, 69);
@@ -13,7 +11,6 @@
 <h3 class="bg-@ThemeColor text-white text-center p-1">@TitleText a Product</h3>
 
 <EditForm Model="Product" OnValidSubmit="SaveProduct">
-
     <DataAnnotationsValidator />
     @if (Product.ProductId != 0)
     {
@@ -22,9 +19,8 @@
             <input class="form-control" disabled value="@Product.ProductId" />
         </div>
     }
-
     <div class="form-group">
-        <label>Title</label>
+        <label>Name</label>
         <ValidationMessage For="@(() => Product.Title)" />
         <InputText class="form-control" @bind-Value="Product.Title" />
     </div>
@@ -32,16 +28,14 @@
     <div class="form-group">
         <label>Description</label>
         <ValidationMessage For="@(() => Product.ShortDescription)" />
-        <InputText class="form-control" @bind-Value="Product.ShortDescription" />
+        <InputTextArea class="form-control" @bind-Value="Product.ShortDescription" />
     </div>
 
     <div class="form-group">
         <label>More details about Product </label>
         <ValidationMessage For="@(() => Product.LongDescription)" />
-        <InputText class="form-control" @bind-Value="Product.LongDescription" />
+        <InputTextArea class="form-control" @bind-Value="Product.LongDescription" />
     </div>
-
-
 
     <div class="form-group">
         <label>Price</label>
@@ -49,31 +43,17 @@
         <InputNumber class="form-control" @bind-Value="Product.Price" />
     </div>
 
-
-
     <div class="form-group">
-        <InputSelect @bind-Value="Product.CategoryId">
-            <option value="1">Computers</option>
-            <option value="2">Apple</option>
-            <option value="3">VideoCards</option>
-            <option value="4">SSDs&HardDrives</option>
-            <option value="5">Processors</option>
-            <option value="6">Power Supplies</option>
-            <option value="7">Air&WaterCooling</option>
-            <option value="8">Wireless Networking</option>
-            <option value="9">RAM </option>
-            <option value="10">Monitors</option>
-
-        </InputSelect>
-
+        <label>Picture of Product:</label>
+        <ValidationMessage For="@(() => Product.Image)" />
+        <InputTextArea class="form-control" @bind-Value="Product.Image" />
     </div>
 
 
-    <button type="submit" class="btn btn-@ThemeColor">Save</button>
 
+    <button type="submit" class="btn btn-@ThemeColor">Save</button>
     <NavLink class="btn btn-secondary" href="/admin/products">Cancel</NavLink>
 </EditForm>
-
 
 
 @code {
@@ -111,4 +91,16 @@
 
 
 
+    public Dictionary<int, string> categories = new Dictionary<int, string>(10)
+        {     {1, "Computers" },
+              {2, "Apple" },
+              {3, "Video Cards" },
+              {4, "SSDs&HardDrives" },
+              {5, "Processors" },
+              {6, "Power Supplies" },
+              {7, "Air&WaterCooling" },
+              {8, "Wireless Networking" },
+              {9, "RAM" },
+              {10,  "Monitors" }
+        };
 }
