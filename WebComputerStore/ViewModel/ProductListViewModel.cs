@@ -12,6 +12,5 @@ namespace WebComputerStore.ViewModel
 
         public PagingInfo PagingInfo { get; set; }
        public string CurrentCategory { get; set; }
-
     }
 }

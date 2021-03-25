@@ -35,6 +35,11 @@ namespace WebComputerStore.Data.Repository
             }
             context.SaveChanges();
         }
+        public void DeleteProduct(Order p)
+        {
+            context.Remove(p);
+            context.SaveChanges();
+        }
 
 
     }

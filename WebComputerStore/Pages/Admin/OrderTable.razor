@@ -17,9 +17,16 @@
             <td>@o.City</td>
             <td>@o.Line1</td>
 
-            <td>
-                Present Wrapping:
-                @o.GiftWrap.ToString()
+            <td>                
+                @if (o.GiftWrap)
+                {
+                <p>Wrap as a present</p>
+                }
+                else
+                {
+            <p>Without wrapping</p>
+                }
+
             </td>
 
 
@@ -30,6 +37,7 @@
                         @onclick="@(e => OrderSelected.InvokeAsync(o.OrderID))">
                     @ButtonLabel
                 </button>
+               
             </td>
         </tr>
                 @foreach (CartLine line in o.Lines)
@@ -38,6 +46,7 @@
                         <td colspan="2"></td>
                         <td>@line.Product.Title</td>
                         <td>@line.Quantity</td>
+                        <td>@line.Product.Price.ToString("c")</td>
                         
                     </tr>
                 }
@@ -52,6 +61,8 @@
 
 
 @code {
+
+
     [Parameter]
     public string TableTitle { get; set; } = "Orders";
 
@@ -62,4 +73,7 @@
     public string ButtonLabel { get; set; } = "Ship";
     [Parameter]
     public EventCallback<int> OrderSelected { get; set; }
+
+   
+
 }

@@ -12,6 +12,10 @@ namespace WebComputerStore.Data
     //IdentityDbContext implements DbContext
     public class ApplicationDbContext : IdentityDbContext 
     {
+        public ApplicationDbContext()
+        {
+        }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
              Database.EnsureCreated();   // create database when first time occuring
@@ -23,6 +27,8 @@ namespace WebComputerStore.Data
         public DbSet<Product> Product { get; set; }
 
         public DbSet<Order> Orders { get; set; }
+
+
 
 
     }

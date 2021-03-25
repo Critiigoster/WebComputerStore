@@ -69,6 +69,7 @@ namespace WebComputerStore
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
             services.AddScoped<IOrder, OrderRepository>();
 
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddServerSideBlazor(); // creates the services that Blazor uses
@@ -128,11 +129,11 @@ namespace WebComputerStore
 
               
 
-                /*
+                
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                */
+                
                 endpoints.MapDefaultControllerRoute();
 
                 endpoints.MapRazorPages(); // registers Razor Pages as endpoints that the URL routing system can use to handle requests.

@@ -47,8 +47,10 @@
         <label>Picture of Product:</label>
         <ValidationMessage For="@(() => Product.Image)" />
         <InputTextArea class="form-control" @bind-Value="Product.Image" />
+
     </div>
 
+ 
 
 
     <button type="submit" class="btn btn-@ThemeColor">Save</button>
@@ -89,18 +91,8 @@
     public string ThemeColor => Id == 0 ? "primary" : "warning";
     public string TitleText => Id == 0 ? "Create" : "Edit";
 
+    public List<string> mylist = new List<string>(new string[] { "Computers", "Apple", "Video Cards", "SSDs&HardDrives",
+        "Processors", "Power Supplies", "Air&WaterCooling", "Wireless Networking", "RAM", "Monitors"});
 
-
-    public Dictionary<int, string> categories = new Dictionary<int, string>(10)
-        {     {1, "Computers" },
-              {2, "Apple" },
-              {3, "Video Cards" },
-              {4, "SSDs&HardDrives" },
-              {5, "Processors" },
-              {6, "Power Supplies" },
-              {7, "Air&WaterCooling" },
-              {8, "Wireless Networking" },
-              {9, "RAM" },
-              {10,  "Monitors" }
-        };
+   
 }

@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 using WebComputerStore.Data.Interfaces;
 using WebComputerStore.Models;
 using WebComputerStore.ViewModel;
@@ -45,15 +48,41 @@ namespace WebComputerStore.Controllers
             return View(obj);
         }
 
-        /*
-        public IActionResult ProductSummary( )
+
+        public IActionResult Search(string searchString, int productPage = 1)
         {
+
+
+            var products = from m in allProducts.Products select m;
+
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(x => x.Title == searchString);
+            }
+
+
+            // Working through view models 
+            // using WebComputerStore.ViewModel
             ProductListViewModel obj =
                 new ProductListViewModel();
 
+            obj._Products = allProducts.Products.
+                Where(s => s.Title.Contains(searchString));
+
+            obj.PagingInfo = new PagingInfo
+            {
+
+                CurrentPage = productPage,
+                ItemsPerPage = PageSize,
+                TotalItems = allProducts.Products.Count()
+            };
+
+            obj.CurrentCategory = "Technique";
             return View(obj);
+
+
         }
 
-        */
     }
 }

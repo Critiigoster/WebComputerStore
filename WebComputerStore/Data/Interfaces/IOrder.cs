@@ -10,5 +10,8 @@ namespace WebComputerStore.Data.Interfaces
     {
         IQueryable<Order> Orders { get; }
         void SaveOrder(Order order);
+
+        void DeleteProduct(Order p);
+
     }
 }

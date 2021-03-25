@@ -32,7 +32,7 @@ namespace WebComputerStore.Models
         [Required(ErrorMessage = "Please specify a category")]
 
         // Two properties for assigning object to particular category
-        public int CategoryId { get; set; } = 1;
+        public int CategoryId { get; set; } = 18;
 
 
         [JsonIgnore]

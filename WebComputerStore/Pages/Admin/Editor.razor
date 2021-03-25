@@ -47,8 +47,15 @@
         <ValidationMessage For="@(() => Product.Category.CategoryName)" />
         <InputText class="form-control" @bind-Value="Product.Category.CategoryName" />
 
-
     </div>
+
+    <InputSelect id="department" @bind-Value="Product.Category.CategoryName">
+        @foreach (var dept in mylist)
+        {
+            <option value="@dept.">@dept</option>
+        }
+    </InputSelect>
+
 
     <button type="submit" class="btn btn-@ThemeColor">Save</button>
     <NavLink class="btn btn-secondary" href="/admin/products">Cancel</NavLink>
@@ -87,4 +94,8 @@
     }
     public string ThemeColor => Id == 0 ? "primary" : "warning";
     public string TitleText => Id == 0 ? "Create" : "Edit";
+
+   public List<string> mylist = new List<string>(new string[] { "Computers", "Apple", "Video Cards", "SSDs&HardDrives", 
+        "Processors", "Power Supplies", "Air&WaterCooling", "Wireless Networking", "RAM", "Monitors"});
+
 }

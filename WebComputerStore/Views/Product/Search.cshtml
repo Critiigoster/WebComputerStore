@@ -14,12 +14,8 @@
 <body>
     <h2>All Products For Your Puproses</h2>
 
-    <form asp-controller="Product" asp-action="Search">
-    <p>
-        Title: <input type="text" name="SearchString" />
-        <input type="submit" value="Filter" />
-    </p>
-</form>
+    
+
     <div class="row ml-5 mb-2">
         @{
             foreach (var item in Model._Products)
@@ -30,11 +26,11 @@
 
                     <h3>@item.Title</h3>
                     <p>@item.ShortDescription</p>
-                    
+
                     <div class="form-row m-2 p-2">
 
                         <span style="font-size:20px" class="badge badge-pill badge-primary m-2 p-2">@item.Price.ToString("c")</span>
-                       <!-- <a class="btn btn-warning p-2 m-2 border border-dark" href="/Detailed" >Details</a> -->
+                        <!-- <a class="btn btn-warning p-2 m-2 border border-dark" href="/Detailed" >Details</a> -->
                         <partial name="ProductSummary" model="item" />
 
                     </div>
@@ -44,7 +40,7 @@
 
                 </div>
 
-                
+
 
 
 
@@ -56,12 +52,7 @@
 
     </div>
 
-    <div page-model="@Model.PagingInfo" page-action="List" page-classes-enabled="true"
-         page-class="btn" page-class-normal="btn-outline-dark"
-         page-class-selected="btn-primary" page-url-category="@Model.CurrentCategory"
-         class="btn-group pull-right m-1">
-
-    </div>
+  
 
 
 
